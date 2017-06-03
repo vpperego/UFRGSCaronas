@@ -7,6 +7,9 @@ import android.view.View;
 
 public class OfferRide extends AppCompatActivity {
 
+    private String getName, getEmail, getCarModel, getCarColor, getPlateLicense;
+    private int getAge, getPhoneNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

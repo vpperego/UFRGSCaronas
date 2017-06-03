@@ -69,6 +69,7 @@
             android:layout_height="35dp"
             android:text="Selecione a opção desejada:"
             android:textSize="18dp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="56dp"
             tools:layout_editor_absoluteY="271dp"
             android:layout_above="@+id/giveRide"

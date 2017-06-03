@@ -9,6 +9,9 @@ import android.widget.Spinner;
 
 public class OfferRide2 extends AppCompatActivity {
 
+    private String getDate, getHour, getDeparturePlace, getArrivalPlace;
+    private int maxPassangers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

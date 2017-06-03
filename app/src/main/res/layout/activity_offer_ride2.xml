@@ -102,8 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
-            android:text="Número Máximo" />
+            android:hint="Número Máximo"
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/textView7"
@@ -118,8 +118,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
-            android:text="Informe a data" />
+            android:hint="Informe a data"
+            android:inputType="date" />
 
         <TextView
             android:id="@+id/textView8"
@@ -134,8 +134,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="time"
-            android:text="Informe o horário" />
+            android:hint="Informe o horário"
+            android:inputType="time" />
 
         <Button
             android:id="@+id/button3"
