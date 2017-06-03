@@ -75,31 +75,34 @@
             android:layout_alignLeft="@+id/giveRide"
             android:layout_alignStart="@+id/giveRide" />
 
+
         <Button
             android:id="@+id/giveRide"
             android:layout_width="257dp"
             android:layout_height="72dp"
-            android:text="Oferecer Carona"
-            android:background="@color/cyan_400"
-            tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="306dp"
-            android:layout_marginBottom="29dp"
             android:layout_above="@+id/takeRide"
             android:layout_alignLeft="@+id/takeRide"
-            android:layout_alignStart="@+id/takeRide" />
+            android:layout_alignStart="@+id/takeRide"
+            android:layout_marginBottom="29dp"
+            android:background="@color/cyan_400"
+            android:onClick="goToOfferARide"
+            android:text="Oferecer Carona"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="306dp" />
 
-                <Button
-                    android:id="@+id/takeRide"
-                    android:layout_width="257dp"
-                    android:layout_height="72dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="28dp"
-                    android:background="@color/cyan_400"
-                    android:onClick="goToSearchRide"
-                    android:text="Procurar Carona"
-                    tools:layout_editor_absoluteX="56dp"
-                    tools:layout_editor_absoluteY="389dp" />
+
+        <Button
+            android:id="@+id/takeRide"
+            android:layout_width="257dp"
+            android:layout_height="72dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="28dp"
+            android:background="@color/cyan_400"
+            android:onClick="goToSearchRide"
+            android:text="Procurar Carona"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="389dp" />
 
         </RelativeLayout>
 

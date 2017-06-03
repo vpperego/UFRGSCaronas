@@ -24,7 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchRide" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".OfferRide" />
+        <activity android:name=".OfferRide2"></activity>
     </application>
 
 </manifest>
