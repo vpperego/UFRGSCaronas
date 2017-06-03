@@ -5,11 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class OfferRide2 extends AppCompatActivity {
 
-    private String getDate, getHour, getDeparturePlace, getArrivalPlace;
+    private String getDriverDate, getDriverHour, getDriverDeparturePlace, getDriverArrivalPlace;
     private int maxPassangers;
 
     @Override
@@ -32,6 +33,24 @@ public class OfferRide2 extends AppCompatActivity {
         Intent intent = new Intent(this, MainProgram.class);
 
         //PEGAR OS DADOS FORNECIDOS E JOGAR NO BANCO DE DADOS
+        Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinner_Partida_Info);
+        /////
+        Spinner dropdownArrival = (Spinner)findViewById(R.id.spinner_chegada_info);
+        /////
+
+
+
+
+        EditText getHour = (EditText) findViewById(R.id.hour_departure);
+        getDriverHour = getHour.getText().toString();
+
+        EditText getDate = (EditText) findViewById(R.id.date_departure);
+        getDriverDate = getDate.getText().toString();
+
+        EditText getAge = (EditText) findViewById(R.id.driver_age);
+        int maxint = Integer.parseInt(getAge.getText().toString());
+        maxPassangers = maxint;
+
 
 
 

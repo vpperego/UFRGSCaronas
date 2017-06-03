@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Cor"
+                android:hint="Cor do seu veículo"
                 android:inputType="text" />
 
             <EditText
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Placa"
+                android:hint="Placa do seu veículo"
                 android:inputType="text" />
 
             <Button
