@@ -42,9 +42,9 @@
             android:id="@+id/DepartureLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/spinnerPartida"
-            android:layout_alignLeft="@+id/spinnerPartida"
-            android:layout_alignStart="@+id/spinnerPartida"
+            android:layout_above="@+id/spinnerOrigin"
+            android:layout_alignLeft="@+id/spinnerOrigin"
+            android:layout_alignStart="@+id/spinnerOrigin"
             android:layout_marginBottom="12dp"
             android:ems="10"
             android:text="Local de Partida"
@@ -53,12 +53,12 @@
             tools:layout_editor_absoluteY="124dp" />
 
         <Spinner
-            android:id="@+id/spinnerPartida"
+            android:id="@+id/spinnerOrigin"
             android:layout_width="283dp"
             android:layout_height="46dp"
-            android:layout_above="@+id/spinnerChegada"
-            android:layout_alignLeft="@+id/spinnerChegada"
-            android:layout_alignStart="@+id/spinnerChegada"
+            android:layout_above="@+id/spinnerDestiny"
+            android:layout_alignLeft="@+id/spinnerDestiny"
+            android:layout_alignStart="@+id/spinnerDestiny"
             android:layout_marginBottom="64dp"
             tools:layout_editor_absoluteX="51dp"
             tools:layout_editor_absoluteY="167dp" />
@@ -67,9 +67,9 @@
             android:id="@+id/ArrivalLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/spinnerChegada"
-            android:layout_alignLeft="@+id/spinnerChegada"
-            android:layout_alignStart="@+id/spinnerChegada"
+            android:layout_above="@+id/spinnerDestiny"
+            android:layout_alignLeft="@+id/spinnerDestiny"
+            android:layout_alignStart="@+id/spinnerDestiny"
             android:ems="10"
             android:text="Local de Chegada"
             android:textSize="20dp"
@@ -77,7 +77,7 @@
             tools:layout_editor_absoluteY="234dp" />
 
         <Spinner
-            android:id="@+id/spinnerChegada"
+            android:id="@+id/spinnerDestiny"
             android:layout_width="283dp"
             android:layout_height="46dp"
             android:layout_above="@+id/searchRide"
