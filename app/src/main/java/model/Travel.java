@@ -15,8 +15,19 @@ public class Travel {
         return source;
     }
 
+    public Travel(String source, String destiny, Date date) {
+        this.source = source;
+        Destiny = destiny;
+        this.date = date;
+    }
+
+    public Travel() {
+
+    }
+
     public void setSource(String source) {
         this.source = source;
+
     }
 
     public String getDestiny() {

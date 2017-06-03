@@ -11,6 +11,16 @@ public class Ride {
     private ArrayList<User> passangers;
     private Travel travel;
 
+    public Ride(User driver, ArrayList<User> passangers, Travel travel) {
+        this.driver = driver;
+        this.passangers = passangers;
+        this.travel = travel;
+    }
+
+    public Ride() {
+
+    }
+
     public User getDriver() {
         return driver;
     }

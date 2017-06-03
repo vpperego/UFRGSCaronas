@@ -10,8 +10,16 @@ public class User {
     private double score;
     private Vehicle vehicle;
 
+    public User(int id, String name, double score, Vehicle vehicle) {
+        this.id = id;
+        this.name = name;
+        this.score = score;
+        this.vehicle = vehicle;
+    }
+
     public int getId() {
         return id;
+
     }
 
     public void setId(int id) {
