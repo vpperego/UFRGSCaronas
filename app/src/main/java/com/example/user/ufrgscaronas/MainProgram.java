@@ -16,8 +16,15 @@ public class MainProgram extends AppCompatActivity {
     }
 
 
+    public void goToOfferARide(View view){
+        Intent intent = new Intent(this, OfferRide.class);
+        startActivity(intent);
+    }
+
     public void goToSearchRide(View view){
         Intent intent = new Intent(this, SearchRide.class);
         startActivity(intent);
     }
+
+
 }

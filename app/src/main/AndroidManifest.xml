@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".SearchRide" />
         <activity android:name=".Login" />
-        <activity android:name=".showRides"></activity>
+        <activity android:name=".OfferRide" />
+        <activity android:name=".OfferRide2"></activity>
     </application>
 
 </manifest>
