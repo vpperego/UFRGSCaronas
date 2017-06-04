@@ -10,6 +10,14 @@ import android.widget.Spinner;
 
 import static com.example.user.ufrgscaronas.R.id.textView;
 
+
+/**
+ * Classe SearchRide. Esta classe é responsável por oferecer ao usuário
+ * a possibilidade de buscar uma carona de um campus a outro. Dando
+ * seu ponto de partida e chegada, e listando uma série de motoristas que
+ * poderiam ser escolhidos para oferecer sua carona.
+ *
+ */
 public class SearchRide extends AppCompatActivity {
 
     @Override
@@ -17,6 +25,7 @@ public class SearchRide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_ride);
 
+        //LISTA AS OPÇÕES DE PONTO DE PARTIDA E PONTO DE CHEGADA.
         Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinnerOrigin);
         String[] itemsDeparture = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsDeparture);

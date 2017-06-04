@@ -45,7 +45,7 @@
                 android:layout_toEndOf="@+id/imageView4"
                 android:layout_toRightOf="@+id/imageView4"
                 android:layout_weight="1"
-                android:text="Informe seus dados abaixo "
+                android:text="Informe seus dados abaixo (Obrigatórios *) "
                 android:textColor="#F00"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -55,16 +55,14 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="383dp"
-            android:layout_height="388dp"
+            android:layout_width="366dp"
+            android:layout_height="410dp"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:layout_alignStart="@+id/relativeLayout"
+            android:layout_below="@+id/relativeLayout"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="120dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="12dp"
-            android:layout_below="@+id/relativeLayout">
+            tools:layout_editor_absoluteY="120dp">
 
             <TextView
                 android:id="@+id/textView16"
@@ -76,34 +74,34 @@
 
             <EditText
                 android:id="@+id/name_complete"
-                android:layout_width="match_parent"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Nome Completo"
+                android:hint="Nome Completo *"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/driver_email"
-                android:layout_width="match_parent"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="Email *"
                 android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/driver_age"
-                android:layout_width="match_parent"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Idade"
+                android:hint="Idade *"
                 android:inputType="number" />
 
             <EditText
                 android:id="@+id/driver_phone"
-                android:layout_width="match_parent"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Telefone"
+                android:hint="Telefone *"
                 android:inputType="phone" />
 
             <TextView
@@ -116,32 +114,32 @@
 
             <EditText
                 android:id="@+id/driver_model_car"
-                android:layout_width="match_parent"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Modelo do Carro"
+                android:hint="Modelo do Carro *"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/driver_model_color"
-                android:layout_width="match_parent"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Cor do seu veículo"
+                android:hint="Cor do seu veículo *"
                 android:inputType="text" />
 
             <EditText
                 android:id="@+id/driver_license_plate"
-                android:layout_width="match_parent"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Placa do seu veículo"
+                android:hint="Placa do seu veículo *"
                 android:inputType="text" />
 
             <Button
                 android:id="@+id/button2"
                 style="@android:style/Widget.Holo.Button"
-                android:layout_width="372dp"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:onClick="makeDriverRegister"
                 android:text="Enviar Dados" />
