@@ -1,6 +1,8 @@
 package com.example.user.ufrgscaronas;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +22,8 @@ public class OfferRide2 extends AppCompatActivity {
 
     private String getDriverDate, getDriverHour, getDriverDeparturePlace, getDriverArrivalPlace;
     private int maxPassangers;
+    public Intent registerEnd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,33 +45,54 @@ public class OfferRide2 extends AppCompatActivity {
 
 
     /**
+     * Confirma o cadastro do usuário. Apresenta uma mensagem de agradecimento
+     * e volta a página inicial do programa.
+     *
+     */
+    public void confirmRegister(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Cadastro realizado com sucesso!! Obrigado por se tornar um motorista do UFRGS Caronas!!" +
+                "\n\nCaso alguem lhe solicite carona, você será notificado via notificação no seu celular!");
+        builder1.setCancelable(false);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(registerEnd);
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
+
+    /**
      * Finaliza o cadastro de um motorista. Sempre que o motorista desejar oferecer carona,
      * ele deve informar os campos do formulário.
      *
      * @param view
      */
     public void finalizeDriverRegister(View view){
-        Intent registerEnd = new Intent(this, MainProgram.class);
+        registerEnd = new Intent(this, MainProgram.class);
 
         //PEGA CADA CAMPO FORNECIDO PELO USUARIO E GUARDA EM UMA VARIAVEL
-        //Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinner_Partida_Info);
-        //getDriverDeparturePlace = dropdownDeparture.getSelectedItem().toString();
+        Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinner_Partida_Info);
+        getDriverDeparturePlace = dropdownDeparture.getSelectedItem().toString();
 
-        //Spinner dropdownArrival = (Spinner)findViewById(R.id.spinner_chegada_info);
-        //getDriverArrivalPlace = dropdownDeparture.getSelectedItem().toString();
+        Spinner dropdownArrival = (Spinner)findViewById(R.id.spinner_chegada_info);
+        getDriverArrivalPlace = dropdownArrival.getSelectedItem().toString();
 
 
         //PARA CADA CAMPO, SE NADA FOI DIGITADO, MENSAGEM SERA EXIBIDA INFORMANDO QUE O CAMPO
         //É OBRIGATÓRIO!
-        /**
+
         if (getDriverDeparturePlace.equals(getDriverArrivalPlace)){
             TextView errorText = (TextView) dropdownArrival.getSelectedView();
             errorText.setError("Campus iguais!!");
             return;
         }
-         */
-
-
 
         EditText getMax = (EditText) findViewById(R.id.passangers_max);
 
@@ -96,10 +121,47 @@ public class OfferRide2 extends AppCompatActivity {
             return;
         }
 
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Confirmar todos os dados?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "CONFIRMAR",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        //GUARDAR TODOS OS DADOS DE ENTRADA DADOS NO BANCO DE DADOS
+
+
+
+
+                        //.....
+
+
+
+
+                        //TERMINAR TUDO
+
+
+                        confirmRegister();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "CANCELAR",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
         //MENSAGEM DE SUCESSO QUE O CADASTRO FOI FINALIZADO
 
 
-        startActivity(registerEnd);
+
     }
 
 }

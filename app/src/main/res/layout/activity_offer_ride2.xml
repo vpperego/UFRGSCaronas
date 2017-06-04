@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Informe a data"
-                android:inputType="text" />
+                android:inputType="date"/>
 
             <TextView
                 android:id="@+id/textView8"
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Informe o horário"
-                android:inputType="text" />
+                android:inputType="time" />
 
             <Button
                 android:id="@+id/button3"

@@ -9,13 +9,16 @@ import android.widget.EditText;
 
 
 /**
- * Classe Oferecer Carona (OfferRide).
+ * Classe Oferecer Carona (OfferRide). Classe responsável
+ * por possibilitar o usuário a se inscrever e torná-lo apto
+ * a poder oferecer carona a estudantes.
  *
  */
 public class OfferRide extends AppCompatActivity {
 
     private String getDriverName, getDriverEmail, getDriverCarModel, getDriverCarColor, getDriverPlateLicense;
     private int getDriverAge, getDriverPhoneNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +100,21 @@ public class OfferRide extends AppCompatActivity {
             getCarPlate.setError("Este campo é obrigatório!");
             return;
         }
+
+
+        //GUARDAR VALORES DAS VARIAVES NO BANCO DE DADOS
+
+
+
+
+
+        //.......TO DO
+
+
+
+
+
+        // ENCERRA E VAI PRA PROXIMA ETAPA
 
         startActivity(offerRide2Intent);
     }

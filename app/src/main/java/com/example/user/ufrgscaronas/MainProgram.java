@@ -35,6 +35,7 @@ public class MainProgram extends AppCompatActivity {
         startActivity(offerARideIntent);
     }
 
+
     /**
      * Método responsável por ir para a ação de procurar carona.
      * No momento em que o usuário clica no botão de ação de procurar, este
