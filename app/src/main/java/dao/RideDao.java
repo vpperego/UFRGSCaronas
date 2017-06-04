@@ -1,12 +1,17 @@
 package dao;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 import model.Ride;
 import model.Travel;
 import model.User;
 import model.Vehicle;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by user on 6/3/2017.
@@ -16,7 +21,11 @@ public class RideDao {
     private ArrayList<Ride> rides;
 
     public RideDao() {
+        Log.d(TAG,"BEFORE RIDESHARDCODED");
+        rides = new ArrayList<Ride>();
+
         ridesHardCoded();
+        Log.d(TAG,"AFTER RIDESHARDCODED");
     }
 
     public ArrayList<Ride> searchRide(String source, String destiny)
@@ -24,7 +33,8 @@ public class RideDao {
         ArrayList<Ride> matchRides = new ArrayList<Ride>();
         for(Ride ride: rides)
         {
-            if(ride.getTravel().getSource() == source && ride.getTravel().getDestiny() == destiny)
+            if(ride.getTravel().getSource().equals(source) &&
+                   ride.getTravel().getDestiny().equals( destiny))
             {
                 matchRides.add(ride);
             }
@@ -34,7 +44,6 @@ public class RideDao {
 
     private void ridesHardCoded()
     {
-
         Vehicle car = new Vehicle("Siena","ILS3250","Cinza",2);
         Vehicle car2 = new Vehicle("Cobalt","FOE4829","Azul",1);
         Vehicle car3 = new Vehicle("Uno","DNJ5930","Red",4);

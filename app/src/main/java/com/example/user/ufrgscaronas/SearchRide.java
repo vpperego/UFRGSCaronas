@@ -3,7 +3,9 @@ package com.example.user.ufrgscaronas;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import static com.example.user.ufrgscaronas.R.id.textView;
@@ -24,9 +26,17 @@ public class SearchRide extends AppCompatActivity {
         String[] itemsArrival = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsArrival);
         dropdownArrival.setAdapter(adapter1);
-
-
+        Button yourButton=(Button) findViewById(R.id.searchRide);
+//set onclicklistener for your button
+        yourButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        checkRide();
+                    }
+                });
     }
+
 
     @Override
     public void onBackPressed() {
@@ -34,17 +44,20 @@ public class SearchRide extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void checkRide(){
-        Intent intent = new Intent(this, MainProgram.class);
+        Intent intent = new Intent(this, showRides.class);
+
+         Spinner origin = (Spinner) findViewById(R.id.spinnerOrigin);
+        Spinner destiny = (Spinner) findViewById(R.id.spinnerDestiny);
+
+        Bundle bundle = new Bundle();
+
+        bundle.putString("origin", origin.getSelectedItem().toString());
+        bundle.putString("destiny", destiny.getSelectedItem().toString());
+        intent.putExtras(bundle);
+
         startActivity(intent);
-         //Spinner origin = (Spinner) findViewById(R.id.spinnerOrigin);
-     //   Spinner destiny = (Spinner) findViewById(R.id.spinnerDestiny);
-
-      //  Bundle bundle = new Bundle();
-
-      //  bundle.putString("origin", origin.getSelectedItem().toString());
-      //  bundle.putString("destiny", destiny.getSelectedItem().toString());
-      //  i.putExtras(bundle);
 
     }
 
