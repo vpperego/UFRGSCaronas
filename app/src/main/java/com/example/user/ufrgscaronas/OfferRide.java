@@ -56,22 +56,23 @@ public class OfferRide extends AppCompatActivity {
         }
 
         EditText getAge = (EditText) findViewById(R.id.driver_age);
-        int ageint = Integer.parseInt(getAge.getText().toString());
-        getDriverAge = ageint;
-
-        if(TextUtils.isEmpty(getAge.getText().toString())){
+        if(TextUtils.isEmpty(getAge.getText().toString())) {
             getAge.setError("Este campo é obrigatório!");
             return;
         }
+        int ageint = Integer.parseInt(getAge.getText().toString());
+        getDriverAge = ageint;
+
 
         EditText getPhone = (EditText) findViewById(R.id.driver_phone);
-        int phoneInt = Integer.parseInt(getPhone.getText().toString());
-        getDriverPhoneNumber = phoneInt;
-
         if(TextUtils.isEmpty(getPhone.getText().toString())){
             getPhone.setError("Este campo é obrigatório!");
             return;
         }
+        int phoneInt = Integer.parseInt(getPhone.getText().toString());
+        getDriverPhoneNumber = phoneInt;
+
+
 
         EditText getCarModel = (EditText) findViewById(R.id.driver_model_car);
         getDriverCarModel = getCarModel.getText().toString();

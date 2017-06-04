@@ -31,8 +31,8 @@ public class MainProgram extends AppCompatActivity {
      * @param view
      */
     public void goToOfferARide(View view){
-        Intent intent = new Intent(this, OfferRide.class);
-        startActivity(intent);
+        Intent offerARideIntent = new Intent(this, OfferRide.class);
+        startActivity(offerARideIntent);
     }
 
     /**
@@ -43,8 +43,8 @@ public class MainProgram extends AppCompatActivity {
      * @param view
      */
     public void goToSearchRide(View view){
-        Intent intent = new Intent(this, SearchRide.class);
-        startActivity(intent);
+        Intent searchRideIntent = new Intent(this, SearchRide.class);
+        startActivity(searchRideIntent);
     }
 
 

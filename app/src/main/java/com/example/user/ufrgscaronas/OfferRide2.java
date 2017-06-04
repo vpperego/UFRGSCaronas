@@ -47,7 +47,7 @@ public class OfferRide2 extends AppCompatActivity {
      * @param view
      */
     public void finalizeDriverRegister(View view){
-        Intent intent = new Intent(this, MainProgram.class);
+        Intent registerEnd = new Intent(this, MainProgram.class);
 
         //PEGA CADA CAMPO FORNECIDO PELO USUARIO E GUARDA EM UMA VARIAVEL
         //Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinner_Partida_Info);
@@ -59,24 +59,26 @@ public class OfferRide2 extends AppCompatActivity {
 
         //PARA CADA CAMPO, SE NADA FOI DIGITADO, MENSAGEM SERA EXIBIDA INFORMANDO QUE O CAMPO
         //É OBRIGATÓRIO!
-
-        /** ALGUM ERRO...MESMO CAMPOS DIFERENTES O ERRO É GERADO...
+        /**
         if (getDriverDeparturePlace.equals(getDriverArrivalPlace)){
-            TextView errorText = (TextView)dropdownArrival.getSelectedView();
+            TextView errorText = (TextView) dropdownArrival.getSelectedView();
             errorText.setError("Campus iguais!!");
             return;
         }
-        */
+         */
+
 
 
         EditText getMax = (EditText) findViewById(R.id.passangers_max);
-        int maxint = Integer.parseInt(getMax.getText().toString());
-        maxPassangers = maxint;
 
         if(TextUtils.isEmpty(getMax.getText().toString())){
             getMax.setError("Este campo é obrigatório!");
             return;
         }
+
+        int maxint = Integer.parseInt(getMax.getText().toString());
+        maxPassangers = maxint;
+
 
         EditText getDate = (EditText) findViewById(R.id.date_departure);
         getDriverDate = getDate.getText().toString();
@@ -97,7 +99,7 @@ public class OfferRide2 extends AppCompatActivity {
         //MENSAGEM DE SUCESSO QUE O CADASTRO FOI FINALIZADO
 
 
-        startActivity(intent);
+        startActivity(registerEnd);
     }
 
 }
