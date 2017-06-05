@@ -8,13 +8,18 @@ public class Vehicle {
     private String name;
     private String plate;
     private String color;
-    private int maximumPasangers;
+    private int maximumPassagers;
 
-    public Vehicle(String name, String plate, String color, int maximumPasangers) {
+    public  Vehicle(){
+
+    }
+
+
+    public Vehicle(String name, String plate, String color, int maximumPassagers) {
         this.name = name;
         this.plate = plate;
         this.color = color;
-        this.maximumPasangers = maximumPasangers;
+        this.maximumPassagers = maximumPassagers;
     }
 
     public String getColor() {
@@ -43,10 +48,10 @@ public class Vehicle {
     }
 
     public int getMaximumPasangers() {
-        return maximumPasangers;
+        return maximumPassagers;
     }
 
-    public void setMaximumPasangers(int maximumPasangers) {
-        this.maximumPasangers = maximumPasangers;
+    public void setMaximummaximumPassagers(int maximumPassagers) {
+        this.maximumPassagers = maximumPassagers;
     }
 }

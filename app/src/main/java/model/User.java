@@ -1,15 +1,21 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by user on 6/3/2017.
  */
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String name;
     private double score;
     private Vehicle vehicle;
 
+    public  User()
+    {
+        this.vehicle = new Vehicle();
+    }
     public User(int id, String name, double score, Vehicle vehicle) {
         this.id = id;
         this.name = name;

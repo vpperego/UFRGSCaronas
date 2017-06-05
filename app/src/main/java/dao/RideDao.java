@@ -18,15 +18,17 @@ import static android.content.ContentValues.TAG;
  */
 
 public class RideDao {
-    private ArrayList<Ride> rides;
-
+    private static ArrayList<Ride> rides;
+    private static boolean isRidersInit = false;
     public RideDao() {
-        Log.d(TAG,"BEFORE RIDESHARDCODED");
-        rides = new ArrayList<Ride>();
 
-        ridesHardCoded();
-        Log.d(TAG,"AFTER RIDESHARDCODED");
-    }
+        if(isRidersInit==false)
+        {
+            rides = new ArrayList<Ride>();
+            ridesHardCoded();
+        }
+        isRidersInit=true;
+     }
 
     public ArrayList<Ride> searchRide(String source, String destiny)
     {
@@ -40,6 +42,18 @@ public class RideDao {
             }
         }
         return matchRides;
+    }
+
+    public  void saveRideFromDrider(User driver,String source, String destiny,Date travelTime){
+
+        Travel newTravel = new Travel(source,destiny,travelTime);
+        ArrayList<User> passangers = new ArrayList<User>();
+
+        Ride newRide = new Ride(driver,passangers,newTravel);
+        if(rides.isEmpty()==true)
+            Log.d(TAG,"ISSO NAO ERA PRA APRECER VAZIO");
+
+        rides.add(newRide);
     }
 
     private void ridesHardCoded()
@@ -74,4 +88,6 @@ public class RideDao {
         rides.add(ride2);
         rides.add(ride3);
     }
+
+
 }

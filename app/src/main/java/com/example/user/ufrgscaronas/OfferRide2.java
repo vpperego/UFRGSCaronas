@@ -6,11 +6,19 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.Calendar;
+
+import controllers.RideControl;
+import model.User;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Classe OfferRide2. Esta classe é responsável por possibilitar o motorista
@@ -23,14 +31,13 @@ public class OfferRide2 extends AppCompatActivity {
     private String getDriverDate, getDriverHour, getDriverDeparturePlace, getDriverArrivalPlace;
     private int maxPassangers;
     public Intent registerEnd;
-
+    private User driver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_ride2);
-
-
+        Log.d(TAG,"ENTRANDO OFFERRIDE2");
         //LISTA AS OPÇÕES DE PONTO DE PARTIDA E PONTO DE CHEGADA.
         Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinner_Partida_Info);
         String[] itemsDeparture = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
@@ -41,8 +48,24 @@ public class OfferRide2 extends AppCompatActivity {
         String[] itemsArrival = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsArrival);
         dropdownArrival.setAdapter(adapter1);
-    }
 
+        readStrings();
+     }
+
+    void readStrings()
+    {
+
+        Bundle bundle = getIntent().getExtras();
+
+        driver = new User();
+        driver.setId(bundle.getInt("id"));
+        driver.setName(bundle.getString("name"));
+        driver.setScore(bundle.getDouble("score"));
+        driver.getVehicle().setName(bundle.getString("carName"));
+        driver.getVehicle().setPlate(bundle.getString("carPlate"));
+        driver.getVehicle().setColor(bundle.getString("carColor"));
+        driver.getVehicle().setMaximummaximumPassagers(bundle.getInt("carPassagers"));
+    }
 
     /**
      * Confirma o cadastro do usuário. Apresenta uma mensagem de agradecimento
@@ -136,10 +159,9 @@ public class OfferRide2 extends AppCompatActivity {
 
 
                         //.....
-
-
-
-
+                    //TODO - salvar data de maneira correta
+                        RideControl rc = new RideControl();
+                        rc.saveRide(driver,getDriverDeparturePlace, getDriverArrivalPlace);
                         //TERMINAR TUDO
 
 
