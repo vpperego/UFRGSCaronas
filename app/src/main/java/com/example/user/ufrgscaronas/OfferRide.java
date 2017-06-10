@@ -24,9 +24,9 @@ import static android.content.ContentValues.TAG;
  */
 public class OfferRide extends AppCompatActivity {
 
-    private String getDriverName, getDriverEmail, getDriverCarModel, getDriverCarColor, getDriverPlateLicense;
+    private String getDriverName, getDriverEmail;
     private int getDriverAge, getDriverPhoneNumber;
-    private Bundle extras;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,69 +84,11 @@ public class OfferRide extends AppCompatActivity {
         getDriverPhoneNumber = phoneInt;
 
 
-
-        EditText getCarModel = (EditText) findViewById(R.id.driver_model_car);
-        getDriverCarModel = getCarModel.getText().toString();
-
-        if(TextUtils.isEmpty(getDriverCarModel)){
-            getCarModel.setError("Este campo é obrigatório!");
-            return;
-        }
-
-        EditText getCarColor = (EditText) findViewById(R.id.driver_model_color);
-        getDriverCarColor = getCarColor.getText().toString();
-
-        if(TextUtils.isEmpty(getDriverCarColor)){
-            getCarColor.setError("Este campo é obrigatório!");
-            return;
-        }
-
-        EditText getCarPlate = (EditText) findViewById(R.id.driver_license_plate);
-        getDriverPlateLicense = getCarPlate.getText().toString();
-
-        if(TextUtils.isEmpty(getDriverPlateLicense)){
-            getCarPlate.setError("Este campo é obrigatório!");
-            return;
-        }
-
-
-        //GUARDAR VALORES DAS VARIAVES NO BANCO DE DADOS
-
-
-        VehicleControl vc= new VehicleControl();
-        Vehicle riderVehicle = vc.saveVehicle(getDriverCarModel,getDriverPlateLicense,getDriverCarColor,4);
-        UserControl uc = new UserControl();
-        Log.d(TAG,"Driver name = " + getDriverName);
-        User newRider =uc.saveUser(getDriverName,5.0,riderVehicle);
-        Log.d(TAG,"Driver name 2 = " + newRider.getName());
-
-        extras  = new Bundle();
-        extras.putString("name",newRider.getName());
-        extras.putInt("id",newRider.getId());
-        extras.putDouble("score",newRider.getScore());
-        extras.putString("carName",newRider.getVehicle().getName());
-        extras.putString("carPlate",newRider.getVehicle().getPlate());
-        extras.putString("carColor",newRider.getVehicle().getColor());
-        extras.putInt("carPassagers",newRider.getVehicle().getMaximumPasangers());
-
-        //.......TO DO
-
-
-
-
-       offerRide2Intent.putExtras(extras);
-
-        //saveUser(String name, double score, Vehicle vehicle)
-    //saveUser(String name, String plate, String color, int maximumPassagers)
-
-        // ENCERRA E VAI PRA PROXIMA ETAPA
-        Log.d(TAG,"BEFORE OFFERRIDE2");
-
+        offerRide2Intent.putExtra("NAME_ID", getDriverName);
         startActivity(offerRide2Intent);
     }
   //      public Vehicle(String name, String plate, String color, int maximumPassagers) {
   //public User(int id, String name, double score, Vehicle vehicle) {
-
 
 
 }

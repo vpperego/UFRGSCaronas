@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainProgram"
+            android:name=".Login"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchRide" />
-        <activity android:name=".Login" />
+        <activity android:name=".MainProgram" />
         <activity android:name=".OfferRide" />
-        <activity android:name=".OfferRide2" />
+        <activity android:name=".OfferRide3" />
         <activity android:name=".showRides" />
-
+        <activity android:name=".OfferRide2"></activity>
     </application>
 
 </manifest>

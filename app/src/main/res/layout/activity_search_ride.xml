@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cyan_50"
     tools:context="com.example.user.ufrgscaronas.SearchRide">
 
     <RelativeLayout
@@ -12,31 +13,20 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="5dp">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="72dp"
-            android:layout_height="73dp"
-            android:layout_alignTop="@+id/textView"
-            android:layout_marginEnd="14dp"
-            android:layout_marginRight="14dp"
-            android:layout_toLeftOf="@+id/textView"
-            android:layout_toStartOf="@+id/textView"
-            app:srcCompat="@mipmap/uc_launcher"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="28dp" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="265dp"
             android:layout_height="63dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="28dp"
             android:text="Informe abaixo seu local de partida e destino:"
-            android:textSize="22dp"
+            android:textColor="#F00"
+            android:textSize="20dp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="103dp"
-            tools:layout_editor_absoluteY="38dp" />
+            tools:layout_editor_absoluteY="38dp"
+            android:layout_marginBottom="17dp"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/DepartureLabel"
@@ -56,35 +46,35 @@
             android:id="@+id/spinnerOrigin"
             android:layout_width="283dp"
             android:layout_height="46dp"
-            android:layout_above="@+id/spinnerDestiny"
-            android:layout_alignLeft="@+id/spinnerDestiny"
-            android:layout_alignStart="@+id/spinnerDestiny"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="31dp"
             tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="167dp" />
+            tools:layout_editor_absoluteY="167dp"
+            android:layout_above="@+id/ArrivalLabel"
+            android:layout_alignLeft="@+id/ArrivalLabel"
+            android:layout_alignStart="@+id/ArrivalLabel" />
 
         <TextView
             android:id="@+id/ArrivalLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/spinnerDestiny"
-            android:layout_alignLeft="@+id/spinnerDestiny"
-            android:layout_alignStart="@+id/spinnerDestiny"
             android:ems="10"
             android:text="Local de Chegada"
             android:textSize="20dp"
             tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="234dp" />
+            tools:layout_editor_absoluteY="234dp"
+            android:layout_above="@+id/spinnerDestiny"
+            android:layout_alignLeft="@+id/spinnerDestiny"
+            android:layout_alignStart="@+id/spinnerDestiny" />
 
         <Spinner
             android:id="@+id/spinnerDestiny"
             android:layout_width="283dp"
             android:layout_height="46dp"
-            android:layout_above="@+id/searchRide"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="59dp"
+            android:layout_marginBottom="54dp"
             tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="264dp" />
+            tools:layout_editor_absoluteY="264dp"
+            android:layout_above="@+id/searchRide"
+            android:layout_centerHorizontal="true" />
 
 
         <Button
@@ -99,6 +89,18 @@
             android:text="Procurar Carona !"
             tools:layout_editor_absoluteX="74dp"
             tools:layout_editor_absoluteY="357dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/img_logo"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toStartOf="@+id/textView"
+            android:layout_marginTop="17dp" />
 
 
     </RelativeLayout>

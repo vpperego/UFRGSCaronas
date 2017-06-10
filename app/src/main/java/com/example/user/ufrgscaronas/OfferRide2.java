@@ -1,188 +1,91 @@
 package com.example.user.ufrgscaronas;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import java.util.Calendar;
-
-import controllers.RideControl;
+import controllers.UserControl;
+import controllers.VehicleControl;
 import model.User;
+import model.Vehicle;
 
 import static android.content.ContentValues.TAG;
 
-/**
- * Classe OfferRide2. Esta classe é responsável por possibilitar o motorista
- * a informar seus dados sobre onde e quando sua carona pode ser executada
- * (dando data, hora, lugar de partida e chegada).
- *
- */
 public class OfferRide2 extends AppCompatActivity {
 
-    private String getDriverDate, getDriverHour, getDriverDeparturePlace, getDriverArrivalPlace;
-    private int maxPassangers;
-    public Intent registerEnd;
-    private User driver;
+
+    private String getDriverName2, getDriverCarModel, getDriverCarColor, getDriverPlateLicense;
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_ride2);
-        Log.d(TAG,"ENTRANDO OFFERRIDE2");
-        //LISTA AS OPÇÕES DE PONTO DE PARTIDA E PONTO DE CHEGADA.
-        Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinner_Partida_Info);
-        String[] itemsDeparture = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsDeparture);
-        dropdownDeparture.setAdapter(adapter);
-
-        Spinner dropdownArrival = (Spinner)findViewById(R.id.spinner_chegada_info);
-        String[] itemsArrival = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsArrival);
-        dropdownArrival.setAdapter(adapter1);
-
-        readStrings();
-     }
-
-    void readStrings()
-    {
-
-        Bundle bundle = getIntent().getExtras();
-
-        driver = new User();
-        driver.setId(bundle.getInt("id"));
-        driver.setName(bundle.getString("name"));
-        driver.setScore(bundle.getDouble("score"));
-        driver.getVehicle().setName(bundle.getString("carName"));
-        driver.getVehicle().setPlate(bundle.getString("carPlate"));
-        driver.getVehicle().setColor(bundle.getString("carColor"));
-        driver.getVehicle().setMaximummaximumPassagers(bundle.getInt("carPassagers"));
-    }
-
-    /**
-     * Confirma o cadastro do usuário. Apresenta uma mensagem de agradecimento
-     * e volta a página inicial do programa.
-     *
-     */
-    public void confirmRegister(){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Cadastro realizado com sucesso!! Obrigado por se tornar um motorista do UFRGS Caronas!!" +
-                "\n\nCaso alguem lhe solicite carona, você será notificado via notificação no seu celular!");
-        builder1.setCancelable(false);
-
-        builder1.setPositiveButton(
-                "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        startActivity(registerEnd);
-                    }
-                });
-
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
     }
 
 
-    /**
-     * Finaliza o cadastro de um motorista. Sempre que o motorista desejar oferecer carona,
-     * ele deve informar os campos do formulário.
-     *
-     * @param view
-     */
-    public void finalizeDriverRegister(View view){
-        registerEnd = new Intent(this, MainProgram.class);
+    public void carModelRegister (View view){
 
-        //PEGA CADA CAMPO FORNECIDO PELO USUARIO E GUARDA EM UMA VARIAVEL
-        Spinner dropdownDeparture = (Spinner)findViewById(R.id.spinner_Partida_Info);
-        getDriverDeparturePlace = dropdownDeparture.getSelectedItem().toString();
-
-        Spinner dropdownArrival = (Spinner)findViewById(R.id.spinner_chegada_info);
-        getDriverArrivalPlace = dropdownArrival.getSelectedItem().toString();
+        Intent offerRide3Intent = new Intent(this, OfferRide3.class);
 
 
-        //PARA CADA CAMPO, SE NADA FOI DIGITADO, MENSAGEM SERA EXIBIDA INFORMANDO QUE O CAMPO
-        //É OBRIGATÓRIO!
+        EditText getCarModel = (EditText) findViewById(R.id.driver_model_car);
+        getDriverCarModel = getCarModel.getText().toString();
 
-        if (getDriverDeparturePlace.equals(getDriverArrivalPlace)){
-            TextView errorText = (TextView) dropdownArrival.getSelectedView();
-            errorText.setError("Campus iguais!!");
+        if(TextUtils.isEmpty(getDriverCarModel)){
+            getCarModel.setError("Este campo é obrigatório!");
             return;
         }
 
-        EditText getMax = (EditText) findViewById(R.id.passangers_max);
+        EditText getCarColor = (EditText) findViewById(R.id.driver_model_color);
+        getDriverCarColor = getCarColor.getText().toString();
 
-        if(TextUtils.isEmpty(getMax.getText().toString())){
-            getMax.setError("Este campo é obrigatório!");
+        if(TextUtils.isEmpty(getDriverCarColor)){
+            getCarColor.setError("Este campo é obrigatório!");
             return;
         }
 
-        int maxint = Integer.parseInt(getMax.getText().toString());
-        maxPassangers = maxint;
+        EditText getCarPlate = (EditText) findViewById(R.id.driver_license_plate);
+        getDriverPlateLicense = getCarPlate.getText().toString();
 
-
-        EditText getDate = (EditText) findViewById(R.id.date_departure);
-        getDriverDate = getDate.getText().toString();
-
-        if(TextUtils.isEmpty(getDriverDate)){
-            getDate.setError("Este campo é obrigatório!");
+        if(TextUtils.isEmpty(getDriverPlateLicense)){
+            getCarPlate.setError("Este campo é obrigatório!");
             return;
         }
 
-        EditText getHour = (EditText) findViewById(R.id.hour_departure);
-        getDriverHour = getHour.getText().toString();
 
-        if(TextUtils.isEmpty(getDriverHour)){
-            getHour.setError("Este campo é obrigatório!");
-            return;
-        }
-
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Confirmar todos os dados?");
-        builder1.setCancelable(true);
-
-        builder1.setPositiveButton(
-                "CONFIRMAR",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-
-                        //GUARDAR TODOS OS DADOS DE ENTRADA DADOS NO BANCO DE DADOS
+        String getDriverName2 = getIntent().getStringExtra("NAME_ID");
 
 
+        VehicleControl vc= new VehicleControl();
+        Vehicle riderVehicle = vc.saveVehicle(getDriverCarModel,getDriverPlateLicense,getDriverCarColor,4);
+        UserControl uc = new UserControl();
+        Log.d(TAG,"Driver name = " + getDriverName2);
+        User newRider =uc.saveUser(getDriverName2,5.0,riderVehicle);
+        Log.d(TAG,"Driver name 2 = " + newRider.getName());
 
+        extras  = new Bundle();
+        extras.putString("name",newRider.getName());
+        extras.putInt("id",newRider.getId());
+        extras.putDouble("score",newRider.getScore());
+        extras.putString("carName",newRider.getVehicle().getName());
+        extras.putString("carPlate",newRider.getVehicle().getPlate());
+        extras.putString("carColor",newRider.getVehicle().getColor());
+        extras.putInt("carPassagers",newRider.getVehicle().getMaximumPasangers());
 
-                        //.....
-                    //TODO - salvar data de maneira correta
-                        RideControl rc = new RideControl();
-                        rc.saveRide(driver,getDriverDeparturePlace, getDriverArrivalPlace);
-                        //TERMINAR TUDO
+        offerRide3Intent.putExtras(extras);
 
+        //saveUser(String name, double score, Vehicle vehicle)
+        //saveUser(String name, String plate, String color, int maximumPassagers)
 
-                        confirmRegister();
-                    }
-                });
+        // ENCERRA E VAI PRA PROXIMA ETAPA
+        Log.d(TAG,"BEFORE OFFERRIDE3");
 
-        builder1.setNegativeButton(
-                "CANCELAR",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
-
-        //MENSAGEM DE SUCESSO QUE O CADASTRO FOI FINALIZADO
-
-
+        startActivity(offerRide3Intent);
 
     }
 

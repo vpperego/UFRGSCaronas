@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import static com.example.user.ufrgscaronas.R.id.textView;
 
@@ -19,6 +20,9 @@ import static com.example.user.ufrgscaronas.R.id.textView;
  *
  */
 public class SearchRide extends AppCompatActivity {
+
+    private String getRiderDeparturePlace, getRiderArrivalPlace;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +61,19 @@ public class SearchRide extends AppCompatActivity {
     public void checkRide(){
         Intent intent = new Intent(this, showRides.class);
 
-         Spinner origin = (Spinner) findViewById(R.id.spinnerOrigin);
+        Spinner origin = (Spinner) findViewById(R.id.spinnerOrigin);
+        getRiderDeparturePlace = origin.getSelectedItem().toString();
+
+
         Spinner destiny = (Spinner) findViewById(R.id.spinnerDestiny);
+        getRiderArrivalPlace = destiny.getSelectedItem().toString();
+
+        if (getRiderDeparturePlace.equals(getRiderArrivalPlace)){
+            TextView errorText = (TextView) destiny.getSelectedView();
+            errorText.setError("Campus iguais!!");
+            return;
+        }
+
 
         Bundle bundle = new Bundle();
 

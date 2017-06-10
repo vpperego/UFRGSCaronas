@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cyan_50"
     tools:context="com.example.user.ufrgscaronas.MainProgram"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
@@ -21,21 +22,7 @@
             tools:layout_editor_absoluteY="8dp"
             tools:layout_editor_absoluteX="8dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="101dp"
-            android:layout_height="107dp"
-            app:srcCompat="@mipmap/uc_launcher"
-            tools:layout_editor_absoluteY="16dp"
-            tools:layout_editor_absoluteX="30dp"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="12dp" />
-
-        <TextView
+                <TextView
             android:id="@+id/MainHeaderText"
             android:layout_width="202dp"
             android:layout_height="67dp"
@@ -45,22 +32,24 @@
             android:textColor="#F00"
             tools:layout_editor_absoluteX="150dp"
             tools:layout_editor_absoluteY="29dp"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignRight="@+id/MainDescription"
-            android:layout_alignEnd="@+id/MainDescription"
-            android:layout_marginBottom="13dp" />
+                    android:layout_marginBottom="21dp"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignRight="@+id/MainDescription"
+                    android:layout_alignEnd="@+id/MainDescription"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginEnd="18dp" />
 
 
-        <TextView
-            android:id="@+id/MainDescription"
-            android:layout_width="308dp"
-            android:layout_height="79dp"
-            android:text="Desejando chegar ou se deslocar de um campus a outro da UFRGS? Ofereça ou procure caronas e garanta uma experiência única com o UFRGS Caronas! Aproveite!"
-            tools:layout_editor_absoluteX="30dp"
-            tools:layout_editor_absoluteY="150dp"
-            android:layout_marginBottom="24dp"
-            android:layout_above="@+id/chooseOption"
-            android:layout_centerHorizontal="true" />
+                <TextView
+                    android:id="@+id/MainDescription"
+                    android:layout_width="308dp"
+                    android:layout_height="79dp"
+                    android:text="Desejando se deslocar ou chegar a UFRGS?"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="150dp"
+                    android:layout_above="@+id/chooseOption"
+                    android:layout_alignLeft="@+id/imageView"
+                    android:layout_alignStart="@+id/imageView" />
 
 
         <TextView
@@ -85,9 +74,9 @@
             android:layout_alignLeft="@+id/takeRide"
             android:layout_alignStart="@+id/takeRide"
             android:layout_marginBottom="29dp"
-            android:background="@color/cyan_400"
             android:onClick="goToOfferARide"
             android:text="Oferecer Carona"
+            android:background="@drawable/button_shape"
             tools:layout_editor_absoluteX="56dp"
             tools:layout_editor_absoluteY="306dp" />
 
@@ -99,11 +88,23 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="28dp"
-            android:background="@color/cyan_400"
             android:onClick="goToSearchRide"
             android:text="Procurar Carona"
+            android:background="@drawable/button_shape"
             tools:layout_editor_absoluteX="56dp"
             tools:layout_editor_absoluteY="389dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/img_logo"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 
