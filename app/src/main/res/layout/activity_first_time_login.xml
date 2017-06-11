@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cyan_50"
+    tools:context="com.example.user.ufrgscaronas.FirstTimeLogin">
+
+    <RelativeLayout
+        android:layout_width="382dp"
+        android:layout_height="510dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="366dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="252dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:text="Preencha os campos abaixo (Obrigatório *)"
+                android:textColor="#F00"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            app:srcCompat="@drawable/img_logo"
+            android:layout_above="@+id/linearLayout4"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:layout_alignStart="@+id/relativeLayout" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_marginLeft="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@+id/imageView4"
+            android:layout_toRightOf="@+id/imageView4"
+            android:text="Primeiro Cadastro"
+            android:textColor="@color/orange_700"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="366dp"
+            android:layout_height="230dp"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:layout_alignStart="@+id/relativeLayout"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/newUserName"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nome Completo *"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/newUserEmail"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Seu Email *"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/newUserPasswrd"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Informe sua Senha"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/newUserConfirmPasswrd"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Confirme sua Senha"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="366dp"
+            android:layout_height="80dp"
+            android:layout_alignLeft="@+id/linearLayout4"
+            android:layout_alignStart="@+id/linearLayout4"
+            android:layout_below="@+id/linearLayout4"
+            android:layout_marginTop="14dp"
+            android:id="@+id/relativeLayout3">
+
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/relativeLayout3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:background="?android:attr/colorPressedHighlight"
+            android:onClick="registerNewUser"
+            android:text="Confirmar Cadastro" />
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

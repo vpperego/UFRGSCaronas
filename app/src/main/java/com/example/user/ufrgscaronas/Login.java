@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
     }
 
 
-    public void recoverMyPassword(){
+    public void recoverMyPassword(View view){
         return;
     }
 
@@ -67,9 +67,8 @@ public class Login extends AppCompatActivity {
 
 
     public void firstTimeLogin(View view){
-        Intent registerNewUser = new Intent(this, MainProgram.class);
+        Intent registerNewUser = new Intent(this, FirstTimeLogin.class);
         startActivity(registerNewUser);
-
     }
 
 }
