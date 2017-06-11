@@ -1,11 +1,14 @@
 package com.example.user.ufrgscaronas;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import controllers.UserControl;
@@ -22,18 +25,21 @@ import static android.content.ContentValues.TAG;
  * a poder oferecer carona a estudantes.
  *
  */
-public class OfferRide extends AppCompatActivity {
+public class OfferRide extends Fragment {
 
     private String getDriverName, getDriverEmail;
     private int getDriverAge, getDriverPhoneNumber;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_offer_ride);
-    }
+    public OfferRide(){}
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_offer_ride,
+                container, false);
+        return view;
+    }
 
     /**
      * Realiza o cadastro básico para o usuário ser possibilitado de
@@ -45,6 +51,7 @@ public class OfferRide extends AppCompatActivity {
      * @param view
      */
     public void makeDriverRegister(View view){
+        /*
         Intent offerRide2Intent = new Intent(this, OfferRide2.class);
 
         //PEGA CADA CAMPO FORNECIDO PELO USUARIO E GUARDA EM UMA VARIAVEL
@@ -86,9 +93,7 @@ public class OfferRide extends AppCompatActivity {
 
         offerRide2Intent.putExtra("NAME_ID", getDriverName);
         startActivity(offerRide2Intent);
+        */
     }
-  //      public Vehicle(String name, String plate, String color, int maximumPassagers) {
-  //public User(int id, String name, double score, Vehicle vehicle) {
-
 
 }

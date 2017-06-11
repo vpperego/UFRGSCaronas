@@ -85,7 +85,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="25dp"
             android:background="@color/orange_A400"
-            android:onClick="checkRide"
             android:text="Procurar Carona !"
             tools:layout_editor_absoluteX="74dp"
             tools:layout_editor_absoluteY="357dp" />

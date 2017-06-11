@@ -3,11 +3,13 @@ package com.example.user.ufrgscaronas;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
 import android.content.CursorLoader;
@@ -20,9 +22,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -33,20 +38,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static android.content.ContentValues.TAG;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class Login extends AppCompatActivity {
+public class Login extends Fragment {
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.activity_login,
+                container, false);
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        Button ftButton = (Button) view.findViewById(R.id.ftLogin);
+        Button mainButton = (Button) view.findViewById(R.id.mainLogin);
+        ftButton.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openFTLogin(v);
+            }
+        });
 
-
+        mainButton.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                makeLogin(v);
+            }
+        });
+        return view;
     }
-
 
     public void recoverMyPassword(View view){
         return;
@@ -55,20 +81,25 @@ public class Login extends AppCompatActivity {
 
 
     public void makeLogin(View view){
-        Intent startProgram = new Intent(this, MainProgram.class);
+     //   Intent startProgram = new Intent(this, MainProgram.class);
 
-        //TODO CHECK MY LOGIN
-
-
-
+        Fragment mainProgram = new MainProgram();
+        FragmentManager manager = getFragmentManager ();
+        manager.beginTransaction().replace(R.id.constraint_main,mainProgram).commit();
         //SE TUDO CERTO, INICIA ACTIVITY PRINCIPAL
-        startActivity(startProgram);
+     //   startActivity(startProgram);
     }
 
 
-    public void firstTimeLogin(View view){
-        Intent registerNewUser = new Intent(this, FirstTimeLogin.class);
-        startActivity(registerNewUser);
+    public void openFTLogin(View v){
+        Log.d(TAG,"ON CLICK FOR OTHER");
+        Fragment ftLogin = new FirstTimeLogin();
+        FragmentManager manager = getFragmentManager ();
+        manager.beginTransaction().replace(R.id.constraint_main,ftLogin).commit();
+
+       // Intent registerNewUser = new Intent(this, FirstTimeLogin.class);
+      //  startActivity(registerNewUser);
     }
+
 
 }

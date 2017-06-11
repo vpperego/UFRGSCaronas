@@ -1,29 +1,53 @@
 package com.example.user.ufrgscaronas;
 
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
-public class FirstTimeLogin extends AppCompatActivity {
+import static android.content.ContentValues.TAG;
+
+public class FirstTimeLogin extends Fragment {
 
     private Intent makeNewUser;
     private String newUserName, newUserEmail, userPassword, userConfirmPassword;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_time_login);
+    public FirstTimeLogin(){
+        //required empty constructor
+        Log.d(TAG,"NO CONSTRUCTOR EMPTY");
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.activity_first_time_login, container, false);
+    }
+/*
+    public void makeLogin(View view){
+        Intent startProgram = new Intent(this, MainProgram.class);
+
+        Fragment fragment = new YourFragment();
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.contentFragment, fragment);
+        transaction.commit();
+        //SE TUDO CERTO, INICIA ACTIVITY PRINCIPAL
+        startActivity(startProgram);
+    }
+*/
 
     public void registerNewUser(View view){
-        makeNewUser = new Intent(this, Login.class);
+    /*    makeNewUser = new Intent(this, Login.class);
 
 
         // Confirmação de que os campos foram preenchidos e não estão nulos
@@ -96,10 +120,11 @@ public class FirstTimeLogin extends AppCompatActivity {
             userConfirmationPasswrd.setError("Senha de confirmação diferente da senha acima!");
             return;
         }
+        */
     }
 
 
-    public void backToLogin(){
+    public void backToLogin(){/*
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage("Cadastro realizado com sucesso! \nInsira seu email e senha " +
                 "informados para ter o acesso ao UFRGS Caronas!");
@@ -116,6 +141,7 @@ public class FirstTimeLogin extends AppCompatActivity {
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
+        */
     }
 
 }
