@@ -36,9 +36,9 @@ public class drawer extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Fragment login = new Login();
+        Fragment mainProgram = new MainProgram();
         FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,login).commit();
+        manager.beginTransaction().replace(R.id.constraint_main,mainProgram).commit();
     }
 
     @Override

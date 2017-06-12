@@ -96,7 +96,7 @@ public class SearchRide extends Fragment {
 
     }
 */
-    //TODO
+
     public void checkRide(View v){
 
         Fragment showRides = new showRides();

@@ -22,7 +22,7 @@
             android:layout_marginTop="23dp">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/offerRideB2"
                 style="@android:style/Widget.Holo.Button"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"

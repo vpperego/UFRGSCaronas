@@ -113,7 +113,7 @@
             android:layout_marginBottom="11dp">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/offerRideB"
                 style="@android:style/Widget.Holo.Button"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"

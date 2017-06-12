@@ -1,6 +1,7 @@
 package com.example.user.ufrgscaronas;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import controllers.UserControl;
@@ -36,8 +38,18 @@ public class OfferRide extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_offer_ride,
+        final View view = inflater.inflate(R.layout.activity_offer_ride,
                 container, false);
+
+        Button offerRideB = (Button )view.findViewById(R.id.offerRideB);
+        offerRideB.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                makeDriverRegister(view);
+            }
+        });
         return view;
     }
 
@@ -48,14 +60,14 @@ public class OfferRide extends Fragment {
      * Pega todos os dados de entrada que o usuário escreveu, e joga
      * num banco de dados.
      *
-     * @param view
+     * @param-> view
      */
-    public void makeDriverRegister(View view){
-        /*
-        Intent offerRide2Intent = new Intent(this, OfferRide2.class);
+    public void makeDriverRegister(View v){
+
+        Fragment offerRide2 = new OfferRide2();
 
         //PEGA CADA CAMPO FORNECIDO PELO USUARIO E GUARDA EM UMA VARIAVEL
-        EditText getName = (EditText) findViewById(R.id.name_complete);
+        EditText getName = (EditText) v.findViewById(R.id.name_complete);
         getDriverName = getName.getText().toString();
 
         //PARA CADA CAMPO, SE NADA FOI DIGITADO, MENSAGEM SERA EXIBIDA INFORMANDO QUE O CAMPO
@@ -65,7 +77,7 @@ public class OfferRide extends Fragment {
             return;
         }
 
-        EditText getEmail = (EditText) findViewById(R.id.driver_email);
+        EditText getEmail = (EditText) v.findViewById(R.id.driver_email);
         getDriverEmail = getEmail.getText().toString();
 
         if(TextUtils.isEmpty(getDriverEmail)) {
@@ -73,7 +85,7 @@ public class OfferRide extends Fragment {
             return;
         }
 
-        EditText getAge = (EditText) findViewById(R.id.driver_age);
+        EditText getAge = (EditText) v.findViewById(R.id.driver_age);
         if(TextUtils.isEmpty(getAge.getText().toString())) {
             getAge.setError("Este campo é obrigatório!");
             return;
@@ -82,7 +94,7 @@ public class OfferRide extends Fragment {
         getDriverAge = ageint;
 
 
-        EditText getPhone = (EditText) findViewById(R.id.driver_phone);
+        EditText getPhone = (EditText) v.findViewById(R.id.driver_phone);
         if(TextUtils.isEmpty(getPhone.getText().toString())){
             getPhone.setError("Este campo é obrigatório!");
             return;
@@ -91,9 +103,12 @@ public class OfferRide extends Fragment {
         getDriverPhoneNumber = phoneInt;
 
 
-        offerRide2Intent.putExtra("NAME_ID", getDriverName);
-        startActivity(offerRide2Intent);
-        */
+        getActivity().getIntent().putExtra("NAME_ID", getDriverName);
+
+        FragmentManager manager = getFragmentManager ();
+        manager.beginTransaction().replace(R.id.constraint_main,offerRide2).commit();
+
+
     }
 
 }

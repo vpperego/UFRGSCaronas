@@ -21,6 +21,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -43,9 +44,9 @@ import static android.content.ContentValues.TAG;
 /**
  * A login screen that offers login via email/password.
  */
-public class Login extends Fragment {
+public class Login extends AppCompatActivity {
 
-    @Override
+   /* @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -73,6 +74,32 @@ public class Login extends Fragment {
         });
         return view;
     }
+*/
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_login);
+
+       Button ftButton = (Button) findViewById(R.id.ftLogin);
+       Button mainButton = (Button) findViewById(R.id.mainLogin);
+       ftButton.setOnClickListener(new OnClickListener()
+       {
+           @Override
+           public void onClick(View v)
+           {
+               openFTLogin(v);
+           }
+       });
+
+       mainButton.setOnClickListener(new OnClickListener()
+       {
+           @Override
+           public void onClick(View v)
+           {
+               makeLogin(v);
+           }
+       });
+   }
 
     public void recoverMyPassword(View view){
         return;
@@ -81,13 +108,15 @@ public class Login extends Fragment {
 
 
     public void makeLogin(View view){
-     //   Intent startProgram = new Intent(this, MainProgram.class);
 
-        Fragment mainProgram = new MainProgram();
-        FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,mainProgram).commit();
+        Intent startProgram = new Intent(this, drawer.class);
+
+        //TODO CHECK MY LOGIN
+
+
+
         //SE TUDO CERTO, INICIA ACTIVITY PRINCIPAL
-     //   startActivity(startProgram);
+        startActivity(startProgram);
     }
 
 

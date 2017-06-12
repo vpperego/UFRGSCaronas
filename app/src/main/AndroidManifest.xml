@@ -14,13 +14,25 @@
         android:roundIcon="@mipmap/uc_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <!--
         <activity android:name=".SearchRide" />
         <activity android:name=".MainProgram" />
         <activity android:name=".OfferRide" />
         <activity android:name=".OfferRide3" />
         <activity android:name=".showRides" />
         <activity android:name=".OfferRide2" />
+        -->
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
          <activity
             android:name=".drawer"
             android:label="@string/title_activity_drawer"

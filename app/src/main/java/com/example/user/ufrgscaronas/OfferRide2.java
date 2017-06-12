@@ -1,11 +1,16 @@
 package com.example.user.ufrgscaronas;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import controllers.UserControl;
@@ -15,25 +20,40 @@ import model.Vehicle;
 
 import static android.content.ContentValues.TAG;
 
-public class OfferRide2 extends AppCompatActivity {
+public class OfferRide2 extends Fragment {
 
 
     private String getDriverName2, getDriverCarModel, getDriverCarColor, getDriverPlateLicense;
     private Bundle extras;
 
+    public OfferRide2(){}
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_offer_ride2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.activity_offer_ride2,
+                container, false);
+        Button offerRideB2 = (Button )view.findViewById(R.id.offerRideB2);
+        offerRideB2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                carModelRegister(view);
+            }
+        });
+
+        return view;
     }
 
 
-    public void carModelRegister (View view){
 
-        Intent offerRide3Intent = new Intent(this, OfferRide3.class);
+    public void carModelRegister (View v){
+
+        Fragment offerRide3 = new OfferRide3();
 
 
-        EditText getCarModel = (EditText) findViewById(R.id.driver_model_car);
+        EditText getCarModel = (EditText) v.findViewById(R.id.driver_model_car);
         getDriverCarModel = getCarModel.getText().toString();
 
         if(TextUtils.isEmpty(getDriverCarModel)){
@@ -41,7 +61,7 @@ public class OfferRide2 extends AppCompatActivity {
             return;
         }
 
-        EditText getCarColor = (EditText) findViewById(R.id.driver_model_color);
+        EditText getCarColor = (EditText) v.findViewById(R.id.driver_model_color);
         getDriverCarColor = getCarColor.getText().toString();
 
         if(TextUtils.isEmpty(getDriverCarColor)){
@@ -49,7 +69,7 @@ public class OfferRide2 extends AppCompatActivity {
             return;
         }
 
-        EditText getCarPlate = (EditText) findViewById(R.id.driver_license_plate);
+        EditText getCarPlate = (EditText) v.findViewById(R.id.driver_license_plate);
         getDriverPlateLicense = getCarPlate.getText().toString();
 
         if(TextUtils.isEmpty(getDriverPlateLicense)){
@@ -58,7 +78,7 @@ public class OfferRide2 extends AppCompatActivity {
         }
 
 
-        String getDriverName2 = getIntent().getStringExtra("NAME_ID");
+        String getDriverName2 = getActivity().getIntent().getStringExtra("NAME_ID");
 
 
         VehicleControl vc= new VehicleControl();
@@ -77,15 +97,16 @@ public class OfferRide2 extends AppCompatActivity {
         extras.putString("carColor",newRider.getVehicle().getColor());
         extras.putInt("carPassagers",newRider.getVehicle().getMaximumPasangers());
 
-        offerRide3Intent.putExtras(extras);
 
+        getActivity().getIntent().putExtras(extras);
         //saveUser(String name, double score, Vehicle vehicle)
         //saveUser(String name, String plate, String color, int maximumPassagers)
 
         // ENCERRA E VAI PRA PROXIMA ETAPA
-        Log.d(TAG,"BEFORE OFFERRIDE3");
+        FragmentManager manager = getFragmentManager ();
+        manager.beginTransaction().replace(R.id.constraint_main,offerRide3).commit();
 
-        startActivity(offerRide3Intent);
+
 
     }
 
