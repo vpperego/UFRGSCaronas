@@ -76,7 +76,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/newUserName"
+                android:id="@+id/newUserNameField"
                 android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -84,7 +84,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/newUserEmail"
+                android:id="@+id/newUserEmailField"
                 android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -92,7 +92,7 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/newUserPasswrd"
+                android:id="@+id/newUserPasswrdField"
                 android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -100,7 +100,7 @@
                 android:inputType="textPassword" />
 
             <EditText
-                android:id="@+id/newUserConfirmPasswrd"
+                android:id="@+id/newUserConfirmPasswrdField"
                 android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -121,7 +121,7 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/FTRegisterButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/relativeLayout3"

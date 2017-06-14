@@ -2,6 +2,7 @@ package com.example.user.ufrgscaronas;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import controllers.VehicleControl;
 import model.User;
 import model.Vehicle;
 
+import static android.R.attr.name;
 import static android.content.ContentValues.TAG;
 
 public class OfferRide2 extends Fragment {
@@ -31,17 +33,25 @@ public class OfferRide2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         final View view = inflater.inflate(R.layout.activity_offer_ride2,
                 container, false);
+
         Button offerRideB2 = (Button )view.findViewById(R.id.offerRideB2);
         offerRideB2.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                Bundle bundle = getArguments();
+                if (bundle != null) {
+                    getDriverName2 = bundle.getString("nameDriver");
+                }
                 carModelRegister(view);
             }
         });
+
+
 
         return view;
     }
@@ -53,6 +63,8 @@ public class OfferRide2 extends Fragment {
         Fragment offerRide3 = new OfferRide3();
 
 
+        //PARA CADA CAMPO, SE NADA FOI DIGITADO, MENSAGEM SERA EXIBIDA INFORMANDO QUE O CAMPO
+        //É OBRIGATÓRIO!
         EditText getCarModel = (EditText) v.findViewById(R.id.driver_model_car);
         getDriverCarModel = getCarModel.getText().toString();
 
@@ -78,7 +90,8 @@ public class OfferRide2 extends Fragment {
         }
 
 
-        String getDriverName2 = getActivity().getIntent().getStringExtra("NAME_ID");
+
+        //getDriverName2 = getActivity().getIntent().getStringExtra("NAME_ID");
 
 
         VehicleControl vc= new VehicleControl();
@@ -97,16 +110,22 @@ public class OfferRide2 extends Fragment {
         extras.putString("carColor",newRider.getVehicle().getColor());
         extras.putInt("carPassagers",newRider.getVehicle().getMaximumPasangers());
 
-
-        getActivity().getIntent().putExtras(extras);
+        offerRide3.setArguments(extras);
+        //getActivity().getIntent().putExtras(extras);
         //saveUser(String name, double score, Vehicle vehicle)
         //saveUser(String name, String plate, String color, int maximumPassagers)
 
-        // ENCERRA E VAI PRA PROXIMA ETAPA
-        FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,offerRide3).commit();
 
+        //ENCERRA E VAI PARA A PROXIMA ETAPA
+        // Cria um nova transação
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
+        //Realiza a transição e coloca na pilha os eventos anteriores.
+        transaction.replace(R.id.constraint_main, offerRide3);
+        transaction.addToBackStack(null);
+
+        // Comita a transação
+        transaction.commit();
 
     }
 

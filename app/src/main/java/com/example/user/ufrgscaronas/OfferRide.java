@@ -2,6 +2,7 @@ package com.example.user.ufrgscaronas;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class OfferRide extends Fragment {
         return view;
     }
 
+
     /**
      * Realiza o cadastro básico para o usuário ser possibilitado de
      * oferecer carona.
@@ -70,12 +72,14 @@ public class OfferRide extends Fragment {
         EditText getName = (EditText) v.findViewById(R.id.name_complete);
         getDriverName = getName.getText().toString();
 
+
         //PARA CADA CAMPO, SE NADA FOI DIGITADO, MENSAGEM SERA EXIBIDA INFORMANDO QUE O CAMPO
         //É OBRIGATÓRIO!
         if(TextUtils.isEmpty(getDriverName)) {
             getName.setError("Este campo é obrigatório!");
             return;
         }
+
 
         EditText getEmail = (EditText) v.findViewById(R.id.driver_email);
         getDriverEmail = getEmail.getText().toString();
@@ -84,6 +88,7 @@ public class OfferRide extends Fragment {
             getEmail.setError("Este campo é obrigatório!");
             return;
         }
+
 
         EditText getAge = (EditText) v.findViewById(R.id.driver_age);
         if(TextUtils.isEmpty(getAge.getText().toString())) {
@@ -103,12 +108,23 @@ public class OfferRide extends Fragment {
         getDriverPhoneNumber = phoneInt;
 
 
-        getActivity().getIntent().putExtra("NAME_ID", getDriverName);
+        Bundle bundle = new Bundle();
+        String myMessage = getDriverName;
+        bundle.putString("nameDriver", myMessage );
+        offerRide2.setArguments(bundle);
+        //getActivity().getIntent().putExtra("NAME_ID", getDriverName);
 
-        FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,offerRide2).commit();
 
+        //Vai para a segunda etapa do cadastro do motorista
+        // Cria um nova transação
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
+        //Realiza a transição e coloca na pilha os eventos anteriores.
+        transaction.replace(R.id.constraint_main, offerRide2);
+        transaction.addToBackStack(null);
+
+        // Comita a transação
+        transaction.commit();
     }
 
 }

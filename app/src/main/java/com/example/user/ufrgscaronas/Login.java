@@ -82,14 +82,12 @@ public class Login extends AppCompatActivity {
 
        Button ftButton = (Button) findViewById(R.id.ftLogin);
        Button mainButton = (Button) findViewById(R.id.mainLogin);
-       ftButton.setOnClickListener(new OnClickListener()
-       {
-           @Override
-           public void onClick(View v)
-           {
-               openFTLogin(v);
-           }
-       });
+       ftButton.setOnClickListener(new OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   openFTLogin(v);
+               }
+           });
 
        mainButton.setOnClickListener(new OnClickListener()
        {
@@ -123,11 +121,21 @@ public class Login extends AppCompatActivity {
     public void openFTLogin(View v){
         Log.d(TAG,"ON CLICK FOR OTHER");
         Fragment ftLogin = new FirstTimeLogin();
-        FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,ftLogin).commit();
+        //FragmentManager manager = getFragmentManager();
+        //manager.beginTransaction().replace(R.id.constraint_main,ftLogin).commit();
 
-       // Intent registerNewUser = new Intent(this, FirstTimeLogin.class);
-      //  startActivity(registerNewUser);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        //Realiza a transição e coloca na pilha os eventos anteriores.
+        transaction.replace(R.id.ftLogin, ftLogin);
+        transaction.addToBackStack(null);
+
+        // Comita a transação
+        transaction.commit();
+
+        //Intent registerNewUser = new Intent(this, FirstTimeLogin.class);
+       //startActivity(registerNewUser);
     }
 
 

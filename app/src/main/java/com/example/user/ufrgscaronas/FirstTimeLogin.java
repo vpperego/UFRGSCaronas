@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import static android.content.ContentValues.TAG;
@@ -28,9 +29,25 @@ public class FirstTimeLogin extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_first_time_login, container, false);
+
+        final View view = inflater.inflate(R.layout.activity_first_time_login,
+                container, false);
+
+        Button FTRegister = (Button )view.findViewById(R.id.FTRegisterButton);
+        FTRegister.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                registerNewUser(view);
+            }
+        });
+        return view;
+
     }
+
+
+
 /*
     public void makeLogin(View view){
         Intent startProgram = new Intent(this, MainProgram.class);
@@ -46,12 +63,12 @@ public class FirstTimeLogin extends Fragment {
     }
 */
 
-    public void registerNewUser(View view){
-    /*    makeNewUser = new Intent(this, Login.class);
+    public void registerNewUser(final View v){
+        makeNewUser = new Intent(v.getContext(), Login.class);
 
 
         // Confirmação de que os campos foram preenchidos e não estão nulos
-        EditText username = (EditText) findViewById(R.id.newUserName);
+        EditText username = (EditText) v.findViewById(R.id.newUserNameField);
         newUserName = username.getText().toString();
 
         if(TextUtils.isEmpty(newUserName)){
@@ -59,7 +76,7 @@ public class FirstTimeLogin extends Fragment {
             return;
         }
 
-        EditText userEmail = (EditText) findViewById(R.id.newUserEmail);
+        EditText userEmail = (EditText) v.findViewById(R.id.newUserEmailField);
         newUserEmail = userEmail.getText().toString();
 
         if(TextUtils.isEmpty(newUserEmail)){
@@ -67,7 +84,7 @@ public class FirstTimeLogin extends Fragment {
             return;
         }
 
-        EditText userPasswrd = (EditText) findViewById(R.id.newUserPasswrd);
+        EditText userPasswrd = (EditText) v.findViewById(R.id.newUserPasswrdField);
         userPassword = userPasswrd.getText().toString();
 
         if(TextUtils.isEmpty(userPassword)){
@@ -75,7 +92,7 @@ public class FirstTimeLogin extends Fragment {
             return;
         }
 
-        EditText userConfirmationPasswrd = (EditText) findViewById(R.id.newUserConfirmPasswrd);
+        EditText userConfirmationPasswrd = (EditText) v.findViewById(R.id.newUserConfirmPasswrdField);
         userConfirmPassword = userConfirmationPasswrd.getText().toString();
 
         if(TextUtils.isEmpty(userConfirmPassword)){
@@ -89,7 +106,7 @@ public class FirstTimeLogin extends Fragment {
         //Se correto, prossegue o processe para confirmação de cadastro. Caso Contrário, notifica
         //que as senhas são diferentes.
         if (userPassword.equals(userConfirmPassword)) {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(v.getContext());
             builder1.setMessage("Confirmar todos os campos?");
             builder1.setCancelable(true);
             builder1.setPositiveButton(
@@ -102,7 +119,7 @@ public class FirstTimeLogin extends Fragment {
 
 
                             //APÓS RETOMAR AO MENU INICIAL PARA O USUARIO ENTRAR COM SEU EMAIL E SENHA CRIADOS
-                            backToLogin();
+                            backToLogin(v);
                         }
                     });
 
@@ -120,12 +137,12 @@ public class FirstTimeLogin extends Fragment {
             userConfirmationPasswrd.setError("Senha de confirmação diferente da senha acima!");
             return;
         }
-        */
+
     }
 
 
-    public void backToLogin(){/*
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+    public void backToLogin(View v){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(v.getContext());
         builder1.setMessage("Cadastro realizado com sucesso! \nInsira seu email e senha " +
                 "informados para ter o acesso ao UFRGS Caronas!");
         builder1.setCancelable(false);
@@ -135,13 +152,13 @@ public class FirstTimeLogin extends Fragment {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         startActivity(makeNewUser);
-                        finish();
+
                     }
                 });
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
-        */
+
     }
 
 }

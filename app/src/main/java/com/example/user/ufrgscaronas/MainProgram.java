@@ -2,14 +2,12 @@ package com.example.user.ufrgscaronas;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 
 
 /**
@@ -20,7 +18,9 @@ import android.widget.EditText;
  */
 public class MainProgram extends Fragment {
 
+
     public MainProgram(){
+
 
     }
     @Override
@@ -60,10 +60,17 @@ public class MainProgram extends Fragment {
     public void goToOfferARide(View view){
        // Intent offerARideIntent = new Intent(this, OfferRide.class);
 
-        Fragment offerRide = new OfferRide();
-        FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,offerRide).commit();
 
+        // Cria um novo fragmento e transação
+        Fragment offerRide = new OfferRide();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        //Realiza a transição e coloca na pilha os eventos anteriores.
+        transaction.replace(R.id.constraint_main, offerRide);
+        transaction.addToBackStack(null);
+
+        // Comita a transação
+        transaction.commit();
     }
 
 
@@ -76,10 +83,17 @@ public class MainProgram extends Fragment {
      */
     public void goToSearchRide(View view){
     //    Intent searchRideIntent = new Intent(this, SearchRide.class);
-        Fragment searchRide = new SearchRide();
-        FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,searchRide).commit();
 
+        //Gera uma nova transação e fragment
+        Fragment searchRide = new SearchRide();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        //Realiza a transição e coloca na pilha os eventos anteriores.
+        transaction.replace(R.id.constraint_main, searchRide);
+        transaction.addToBackStack(null);
+
+        // Comita a transação
+        transaction.commit();
  //       startActivity(searchRideIntent);
     }
 

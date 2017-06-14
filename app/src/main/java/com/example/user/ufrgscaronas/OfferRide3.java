@@ -1,6 +1,7 @@
 package com.example.user.ufrgscaronas;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Fragment;
@@ -38,11 +39,13 @@ public class OfferRide3 extends Fragment {
 
     public OfferRide3(){}
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_offer_ride3,
                 container, false);
+
 
         //LISTA AS OPÇÕES DE PONTO DE PARTIDA E PONTO DE CHEGADA.
         Spinner dropdownDeparture = (Spinner)view.findViewById(R.id.spinner_Partida_Info);
@@ -55,9 +58,14 @@ public class OfferRide3 extends Fragment {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, itemsArrival);
         dropdownArrival.setAdapter(adapter1);
 
+
+        //Lê os dados passados anteriormente
         readStrings();
-        Button offerRideB2 = (Button )view.findViewById(R.id.offerRideB2);
-        offerRideB2.setOnClickListener(new View.OnClickListener()
+
+
+        //Ação para finalizar o cadastro quando o usuário apertar o botão
+        Button offerRideB3 = (Button )view.findViewById(R.id.offerRideB3);
+        offerRideB3.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -72,7 +80,8 @@ public class OfferRide3 extends Fragment {
     void readStrings()
     {
 
-        Bundle bundle = getActivity().getIntent().getExtras();
+        //Bundle bundle = getActivity().getIntent().getExtras();
+        Bundle bundle = getArguments();
 
         driver = new User();
         driver.setId(bundle.getInt("id"));
@@ -83,6 +92,7 @@ public class OfferRide3 extends Fragment {
         driver.getVehicle().setColor(bundle.getString("carColor"));
         driver.getVehicle().setMaximummaximumPassagers(bundle.getInt("carPassagers"));
     }
+
 
     /**
      * Confirma o cadastro do usuário. Apresenta uma mensagem de agradecimento
@@ -99,8 +109,15 @@ public class OfferRide3 extends Fragment {
                 "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        FragmentManager manager = getFragmentManager ();
-                        manager.beginTransaction().replace(R.id.constraint_main,registerEnd).commit();
+                        //Finaliza o registro do motorista
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                        //Realiza a transição e coloca na pilha os eventos anteriores.
+                        transaction.replace(R.id.constraint_main, registerEnd);
+                        transaction.addToBackStack(null);
+
+                        // Comita a transação
+                        transaction.commit();
                      }
                 });
 
@@ -128,7 +145,6 @@ public class OfferRide3 extends Fragment {
 
         //PARA CADA CAMPO, SE NADA FOI DIGITADO, MENSAGEM SERA EXIBIDA INFORMANDO QUE O CAMPO
         //É OBRIGATÓRIO!
-
         if (getDriverDeparturePlace.equals(getDriverArrivalPlace)){
             TextView errorText = (TextView) dropdownArrival.getSelectedView();
             errorText.setError("Campus iguais!!");

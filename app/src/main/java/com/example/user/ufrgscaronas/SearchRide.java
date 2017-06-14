@@ -2,6 +2,7 @@ package com.example.user.ufrgscaronas;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,10 +35,14 @@ public class SearchRide extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_search_ride,
                 container, false);
+
+
         //LISTA AS OPÇÕES DE PONTO DE PARTIDA E PONTO DE CHEGADA.
         Spinner dropdownDeparture = (Spinner)view.findViewById(R.id.spinnerOrigin);
         String[] itemsDeparture = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
-      //  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsDeparture);
+
+        //  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsDeparture);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_dropdown_item, itemsDeparture);
         dropdownDeparture.setAdapter(adapter);
 
@@ -45,6 +50,8 @@ public class SearchRide extends Fragment {
         String[] itemsArrival = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, itemsArrival);
         dropdownArrival.setAdapter(adapter1);
+
+
         Button yourButton=(Button) view.findViewById(R.id.searchRide);
          yourButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -58,6 +65,8 @@ public class SearchRide extends Fragment {
 
         return view;
     }
+
+
     /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,8 +134,16 @@ public class SearchRide extends Fragment {
         getActivity().getIntent().putExtra("origin", origin.getSelectedItem().toString());
         getActivity().getIntent().putExtra("destiny", destiny.getSelectedItem().toString());
 
-        FragmentManager manager = getFragmentManager ();
-        manager.beginTransaction().replace(R.id.constraint_main,showRides).commit();
+
+        //Mostra a lista de motoristas disponíveis
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        //Realiza a transição e coloca na pilha os eventos anteriores.
+        transaction.replace(R.id.constraint_main, showRides);
+        transaction.addToBackStack(null);
+
+        // Comita a transação
+        transaction.commit();
 
     }
 
