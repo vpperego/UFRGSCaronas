@@ -1,0 +1,3 @@
+//DADOS PARA ACESSO COMO ADMINISTRADOR
+//NOME ; Idade ; Email ; Senha
+admin;Não Informado;admin@admin.com;admin

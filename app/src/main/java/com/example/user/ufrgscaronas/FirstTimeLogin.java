@@ -1,6 +1,7 @@
 package com.example.user.ufrgscaronas;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -14,19 +15,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import static android.content.ContentValues.TAG;
 
-public class FirstTimeLogin extends Fragment {
+public class FirstTimeLogin extends AppCompatActivity {
 
     private Intent makeNewUser;
-    private String newUserName, newUserEmail, userPassword, userConfirmPassword;
+    private String newUserName, newUserEmail, newUserAge, userPassword, userConfirmPassword;
 
     public FirstTimeLogin(){
         //required empty constructor
         Log.d(TAG,"NO CONSTRUCTOR EMPTY");
     }
 
-    @Override
+    /*
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -45,30 +49,46 @@ public class FirstTimeLogin extends Fragment {
         return view;
 
     }
+    */
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_first_time_login);
+
+        Button FTRegister = (Button )findViewById(R.id.FTRegisterButton);
+        FTRegister.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                registerNewUser(v);
+            }
+        });
+    }
 
 
 
-/*
     public void makeLogin(View view){
         Intent startProgram = new Intent(this, MainProgram.class);
 
-        Fragment fragment = new YourFragment();
+        //Fragment fragment = new YourFragment();
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.contentFragment, fragment);
-        transaction.commit();
+        //FragmentManager fm = getSupportFragmentManager();
+        //FragmentTransaction transaction = fm.beginTransaction();
+        //transaction.replace(R.id.contentFragment, fragment);
+        //transaction.commit();
         //SE TUDO CERTO, INICIA ACTIVITY PRINCIPAL
         startActivity(startProgram);
     }
-*/
+
 
     public void registerNewUser(final View v){
-        makeNewUser = new Intent(v.getContext(), Login.class);
+        makeNewUser = new Intent(this, Login.class);
 
 
         // Confirmação de que os campos foram preenchidos e não estão nulos
-        EditText username = (EditText) v.findViewById(R.id.newUserNameField);
+        EditText username = (EditText) findViewById(R.id.newUserNameField);
         newUserName = username.getText().toString();
 
         if(TextUtils.isEmpty(newUserName)){
@@ -76,7 +96,7 @@ public class FirstTimeLogin extends Fragment {
             return;
         }
 
-        EditText userEmail = (EditText) v.findViewById(R.id.newUserEmailField);
+        EditText userEmail = (EditText) findViewById(R.id.newUserEmailField);
         newUserEmail = userEmail.getText().toString();
 
         if(TextUtils.isEmpty(newUserEmail)){
@@ -84,7 +104,12 @@ public class FirstTimeLogin extends Fragment {
             return;
         }
 
-        EditText userPasswrd = (EditText) v.findViewById(R.id.newUserPasswrdField);
+
+        EditText userAge = (EditText) findViewById(R.id.newUserAgeField);
+        newUserAge = userAge.getText().toString();
+
+
+        EditText userPasswrd = (EditText) findViewById(R.id.newUserPasswrdField);
         userPassword = userPasswrd.getText().toString();
 
         if(TextUtils.isEmpty(userPassword)){
@@ -92,13 +117,19 @@ public class FirstTimeLogin extends Fragment {
             return;
         }
 
-        EditText userConfirmationPasswrd = (EditText) v.findViewById(R.id.newUserConfirmPasswrdField);
+        EditText userConfirmationPasswrd = (EditText) findViewById(R.id.newUserConfirmPasswrdField);
         userConfirmPassword = userConfirmationPasswrd.getText().toString();
 
         if(TextUtils.isEmpty(userConfirmPassword)){
             userConfirmationPasswrd.setError("Este campo é obrigatório!");
             return;
         }
+
+
+        if(TextUtils.isEmpty(newUserAge)){
+            newUserAge = "Não Informado";
+        }
+
         /////////////////////////////////////////////////////////////////////
 
 
@@ -114,7 +145,20 @@ public class FirstTimeLogin extends Fragment {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
-                            //GUARDAR TODOS OS DADOS DE ENTRADA DADOS NO BANCO DE DADOS
+                            //GUARDAR TODOS OS DADOS DE ENTRADA DADOS NO BANCO DE
+                            String filename = "users_accounts.txt";
+                            String string = newUserName+";"+newUserAge+";"+ newUserEmail+";"+userPassword+"\n";
+                            FileOutputStream outputStream;
+
+                            try {
+                                outputStream = openFileOutput(filename, Context.MODE_APPEND);
+                                outputStream.write(string.getBytes());
+                                outputStream.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
 
 
 

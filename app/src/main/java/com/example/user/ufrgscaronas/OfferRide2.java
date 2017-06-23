@@ -22,13 +22,19 @@ import model.Vehicle;
 import static android.R.attr.name;
 import static android.content.ContentValues.TAG;
 
+/**
+ * Classe OfferRide2. Classe que implementa a segunda etapa do registro de oferecer carona.
+ *
+ */
 public class OfferRide2 extends Fragment {
 
 
     private String getDriverName2, getDriverCarModel, getDriverCarColor, getDriverPlateLicense;
     private Bundle extras;
 
+
     public OfferRide2(){}
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,8 +96,6 @@ public class OfferRide2 extends Fragment {
         }
 
 
-
-        //getDriverName2 = getActivity().getIntent().getStringExtra("NAME_ID");
 
 
         VehicleControl vc= new VehicleControl();

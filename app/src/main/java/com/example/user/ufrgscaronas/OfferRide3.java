@@ -1,15 +1,11 @@
 package com.example.user.ufrgscaronas;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +17,6 @@ import android.widget.TextView;
 
 import controllers.RideControl;
 import model.User;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Classe OfferRide3. Esta classe é responsável por possibilitar o motorista
@@ -70,7 +64,7 @@ public class OfferRide3 extends Fragment {
             @Override
             public void onClick(View v)
             {
-                finalizeDriverRegister(view);
+                driverRideInfoRegister(view);
             }
         });
         return view;
@@ -79,8 +73,6 @@ public class OfferRide3 extends Fragment {
 
     void readStrings()
     {
-
-        //Bundle bundle = getActivity().getIntent().getExtras();
         Bundle bundle = getArguments();
 
         driver = new User();
@@ -132,7 +124,7 @@ public class OfferRide3 extends Fragment {
      *
      * @param view
      */
-    public void finalizeDriverRegister(final View view){
+    public void driverRideInfoRegister(final View view){
         registerEnd = new MainProgram();
 
         //PEGA CADA CAMPO FORNECIDO PELO USUARIO E GUARDA EM UMA VARIAVEL
@@ -178,6 +170,8 @@ public class OfferRide3 extends Fragment {
             return;
         }
 
+
+        //Pop up será exibido para saber se o usuário confirma tudo que informou.
         AlertDialog.Builder builder1 = new AlertDialog.Builder(view.getContext());
         builder1.setMessage("Confirmar todos os dados?");
         builder1.setCancelable(true);

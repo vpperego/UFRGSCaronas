@@ -18,6 +18,7 @@ import android.widget.Button;
  */
 public class MainProgram extends Fragment {
 
+    private String name_info, age_info, email_info;
 
     public MainProgram(){
 
@@ -28,6 +29,7 @@ public class MainProgram extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main,
                 container, false);
+
         Button giveRide = (Button )view.findViewById(R.id.giveRide);
         Button takeRide = (Button )view.findViewById(R.id.takeRide);
         giveRide.setOnClickListener(new View.OnClickListener()
@@ -58,11 +60,9 @@ public class MainProgram extends Fragment {
      * @param view
      */
     public void goToOfferARide(View view){
-       // Intent offerARideIntent = new Intent(this, OfferRide.class);
-
-
         // Cria um novo fragmento e transação
         Fragment offerRide = new OfferRide();
+
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         //Realiza a transição e coloca na pilha os eventos anteriores.
@@ -82,7 +82,6 @@ public class MainProgram extends Fragment {
      * @param view
      */
     public void goToSearchRide(View view){
-    //    Intent searchRideIntent = new Intent(this, SearchRide.class);
 
         //Gera uma nova transação e fragment
         Fragment searchRide = new SearchRide();
@@ -94,7 +93,6 @@ public class MainProgram extends Fragment {
 
         // Comita a transação
         transaction.commit();
- //       startActivity(searchRideIntent);
     }
 
 

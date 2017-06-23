@@ -39,6 +39,8 @@ public class drawer extends AppCompatActivity
         Fragment mainProgram = new MainProgram();
         FragmentManager manager = getFragmentManager ();
         manager.beginTransaction().replace(R.id.constraint_main,mainProgram).commit();
+
+
     }
 
 
@@ -101,10 +103,19 @@ public class drawer extends AppCompatActivity
 
         try {
             fragment = (Fragment) fragmentClass.newInstance();
+            Bundle bundle = new Bundle();
+            String get_user = getIntent().getStringExtra("complete_name");
+            String get_userAge = getIntent().getStringExtra("user_age");
+            String get_email = getIntent().getStringExtra("email");
+            bundle.putString("name", get_user );
+            bundle.putString("age", get_userAge);
+            bundle.putString("email", get_email );
+            fragment.setArguments(bundle);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        
         // Cria uma nova transação
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 

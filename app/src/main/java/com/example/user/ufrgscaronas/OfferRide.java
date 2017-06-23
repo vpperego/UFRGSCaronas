@@ -36,11 +36,13 @@ public class OfferRide extends Fragment {
 
     public OfferRide(){}
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_offer_ride,
                 container, false);
+
 
         Button offerRideB = (Button )view.findViewById(R.id.offerRideB);
         offerRideB.setOnClickListener(new View.OnClickListener()
@@ -108,11 +110,11 @@ public class OfferRide extends Fragment {
         getDriverPhoneNumber = phoneInt;
 
 
+        //Grava o dado do nome do motorista para passar a próxima etapa.
         Bundle bundle = new Bundle();
         String myMessage = getDriverName;
         bundle.putString("nameDriver", myMessage );
         offerRide2.setArguments(bundle);
-        //getActivity().getIntent().putExtra("NAME_ID", getDriverName);
 
 
         //Vai para a segunda etapa do cadastro do motorista

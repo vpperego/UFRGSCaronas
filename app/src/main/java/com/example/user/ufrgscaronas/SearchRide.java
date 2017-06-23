@@ -41,8 +41,6 @@ public class SearchRide extends Fragment {
         Spinner dropdownDeparture = (Spinner)view.findViewById(R.id.spinnerOrigin);
         String[] itemsDeparture = new String[]{"Campus Centro", "Campus Vale", "Campus ESEFID"};
 
-        //  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsDeparture);
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_dropdown_item, itemsDeparture);
         dropdownDeparture.setAdapter(adapter);
 

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -26,4 +29,5 @@ public class AccountSettings extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.activity_account_settings, container, false);
     }
+
 }

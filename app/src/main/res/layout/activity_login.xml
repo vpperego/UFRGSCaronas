@@ -36,16 +36,16 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText2"
-                android:layout_width="342dp"
+                android:id="@+id/type_email"
+                android:layout_width="332dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/editText3"
-                android:layout_width="342dp"
+                android:id="@+id/type_password"
+                android:layout_width="332dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="senha"
@@ -64,7 +64,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/recover_my_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -79,11 +79,11 @@
                     android:id="@+id/ftLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/textView12"
-                    android:layout_alignLeft="@+id/textView12"
+                    android:layout_alignEnd="@+id/recover_my_password"
+                    android:layout_alignLeft="@+id/recover_my_password"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignRight="@+id/textView12"
-                    android:layout_alignStart="@+id/textView12"
+                    android:layout_alignRight="@+id/recover_my_password"
+                    android:layout_alignStart="@+id/recover_my_password"
                     android:background="?android:attr/colorPressedHighlight"
                     android:text="PRIMEIRA VEZ?" />
 
