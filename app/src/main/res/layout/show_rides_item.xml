@@ -8,47 +8,58 @@
 
 
     <TextView
-        android:id="@+id/riderName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/driverImg"
-        android:layout_toEndOf="@+id/driverImg" />
-
-    <TextView
-        android:id="@+id/carName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/driverImg"
-        android:layout_toEndOf="@+id/driverImg"
-        android:layout_toRightOf="@+id/driverImg"
-        android:layout_weight="1"
-        android:text="TextView"
-        android:textSize="18sp" />
+        android:id="@+id/travelTime"
+        android:layout_width="80dp"
+        android:layout_height="54dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="teste"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="1dp" />
 
     <TextView
         android:id="@+id/carColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/carName"
-        android:layout_alignBottom="@+id/carName"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"
-        android:layout_toEndOf="@+id/carName"
-        android:layout_toRightOf="@+id/carName"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="4dp"
+        android:layout_below="@+id/carName"
+        android:layout_alignLeft="@+id/carName"
+        android:layout_alignStart="@+id/carName" />
 
-    <ImageView
-        android:id="@+id/driverImg"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+    <TextView
+        android:id="@+id/riderName"
+        android:layout_width="138dp"
+        android:layout_height="51dp"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="4dp"
         android:layout_alignParentTop="true"
-        app:srcCompat="@drawable/robot" />
+        android:layout_toRightOf="@+id/travelTime"
+        android:layout_toEndOf="@+id/travelTime"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
+
+    <TextView
+        android:id="@+id/carName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.41"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="21dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/riderName"
+        android:layout_toEndOf="@+id/riderName" />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by user on 6/3/2017.
@@ -9,16 +10,26 @@ import java.util.ArrayList;
 public class Ride {
     private User driver;
     private ArrayList<User> passangers;
-    private Travel travel;
 
-    public Ride(User driver, ArrayList<User> passangers, Travel travel) {
+    private String source;
+    private String Destiny;
+    private Date date;
+
+    public Ride(User driver, ArrayList<User> passangers) {
         this.driver = driver;
         this.passangers = passangers;
-        this.travel = travel;
     }
 
     public Ride() {
 
+    }
+
+    public Ride(User driver, ArrayList<User> passangers, String source, String destiny, Date date) {
+        this.driver = driver;
+        this.passangers = passangers;
+        this.source = source;
+        Destiny = destiny;
+        this.date = date;
     }
 
     public User getDriver() {
@@ -37,11 +48,29 @@ public class Ride {
         this.passangers = passangers;
     }
 
-    public Travel getTravel() {
-        return travel;
+
+    public String getSource() {
+        return source;
     }
 
-    public void setTravel(Travel travel) {
-        this.travel = travel;
+    public void setSource(String source) {
+        this.source = source;
+
+    }
+
+    public String getDestiny() {
+        return Destiny;
+    }
+
+    public void setDestiny(String destiny) {
+        Destiny = destiny;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

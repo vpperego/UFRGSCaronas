@@ -17,8 +17,8 @@
             android:id="@+id/profile_age_id"
             android:layout_width="245dp"
             android:layout_height="40dp"
-            android:layout_alignBaseline="@+id/textView17"
-            android:layout_alignBottom="@+id/textView17"
+            android:layout_alignBaseline="@+id/travelTime"
+            android:layout_alignBottom="@+id/travelTime"
             android:layout_toEndOf="@+id/textNameUserView_Profile"
             android:layout_toRightOf="@+id/textNameUserView_Profile" />
 
@@ -101,7 +101,7 @@
             android:layout_alignEnd="@+id/textView18" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/travelTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Idade:"
