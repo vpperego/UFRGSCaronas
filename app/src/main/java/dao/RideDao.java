@@ -78,6 +78,13 @@ public class RideDao {
         Date d2 = new Date();
         Date d3 = new Date();
 
+        Date d4 = new Date();
+        Date d5 = new Date();
+        Date d6 = new Date();
+
+        Date d7 = new Date();
+        Date d8 = new Date();
+        Date d9 = new Date();
         Time t = new Time(0);
 
         GregorianCalendar gc = new GregorianCalendar();
@@ -99,13 +106,54 @@ public class RideDao {
         gc.set(GregorianCalendar.MINUTE,10);
         d3.setTime(gc.getTime().getTime());
 
+        gc.set(GregorianCalendar.HOUR_OF_DAY,13);
+        gc.set(GregorianCalendar.MINUTE,10);
+        d4.setTime(gc.getTime().getTime());
+
+        gc.set(GregorianCalendar.HOUR_OF_DAY,13);
+        gc.set(GregorianCalendar.MINUTE,10);
+        d5.setTime(gc.getTime().getTime());
+
+        gc.set(GregorianCalendar.HOUR_OF_DAY,13);
+        gc.set(GregorianCalendar.MINUTE,10);
+        d6.setTime(gc.getTime().getTime());
+
+        gc.set(GregorianCalendar.HOUR_OF_DAY,13);
+        gc.set(GregorianCalendar.MINUTE,10);
+        d7.setTime(gc.getTime().getTime());
+
+        gc.set(GregorianCalendar.HOUR_OF_DAY,13);
+        gc.set(GregorianCalendar.MINUTE,10);
+        d8.setTime(gc.getTime().getTime());
+
+        gc.set(GregorianCalendar.HOUR_OF_DAY,13);
+        gc.set(GregorianCalendar.MINUTE,10);
+        d9.setTime(gc.getTime().getTime());
+
         Ride ride = new Ride(driver,p1,"Campus Centro","Campus Vale",d1);
         Ride ride2 = new Ride(driver2,p2,"Campus ESEFID","Campus Vale",d2);
         Ride ride3 = new Ride(driver3,p3,"Campus Vale","Campus ESEFID",d3);
 
+        Ride ride4 = new Ride(driver3,p1,"Campus Centro","Campus Vale",d1);
+        Ride ride5 = new Ride(driver,p2,"Campus ESEFID","Campus Vale",d2);
+        Ride ride6 = new Ride(driver2,p3,"Campus Vale","Campus ESEFID",d3);
+
+        Ride ride7 = new Ride(driver2,p1,"Campus Centro","Campus Vale",d1);
+        Ride ride8 = new Ride(driver3,p2,"Campus ESEFID","Campus Vale",d2);
+        Ride ride9 = new Ride(driver,p3,"Campus Vale","Campus ESEFID",d3);
+
+
         rides.add(ride);
         rides.add(ride2);
         rides.add(ride3);
+
+        rides.add(ride4);
+        rides.add(ride5);
+        rides.add(ride6);
+
+        rides.add(ride7);
+        rides.add(ride8);
+        rides.add(ride9);
     }
 
 

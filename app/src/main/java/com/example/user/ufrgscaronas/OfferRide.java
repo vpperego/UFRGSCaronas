@@ -30,8 +30,8 @@ import static android.content.ContentValues.TAG;
  */
 public class OfferRide extends Fragment {
 
-    private String getDriverName, getDriverEmail;
-    private int getDriverAge, getDriverPhoneNumber;
+    private String getDriverName, getDriverEmail,getDriverPhoneNumber;
+    private int getDriverAge;
 
 
     public OfferRide(){}
@@ -106,8 +106,7 @@ public class OfferRide extends Fragment {
             getPhone.setError("Este campo é obrigatório!");
             return;
         }
-        int phoneInt = Integer.parseInt(getPhone.getText().toString());
-        getDriverPhoneNumber = phoneInt;
+        getDriverPhoneNumber= getPhone.getText().toString();
 
 
         //Grava o dado do nome do motorista para passar a próxima etapa.
@@ -126,6 +125,7 @@ public class OfferRide extends Fragment {
         transaction.addToBackStack(null);
 
         // Comita a transação
+        Log.d(TAG,"Fazendo commit...");
         transaction.commit();
     }
 

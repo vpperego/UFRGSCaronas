@@ -1,12 +1,15 @@
 package com.example.user.ufrgscaronas;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -40,7 +43,7 @@ public class showRides extends Fragment{
         return view;
     }
 
-    private  void listRides(View v){
+    private  void listRides(final View v){
 
         RideControl rc= new RideControl();
         ArrayList<Ride> availableRides = rc.showRides(origin,destiny);
@@ -49,10 +52,31 @@ public class showRides extends Fragment{
       //  Log.d(TAG,"Before ridesAdapter");
 
          RideAdapterItem ridesAdapter = new RideAdapterItem(v.getContext(),availableRides);
-        ListView ridesResult = (ListView) v.findViewById(R.id.ridesResult);
+        final ListView ridesResult = (ListView) v.findViewById(R.id.ridesResult);
         Log.d(TAG,"Rides size = "+ availableRides.size());
 
         ridesResult.setAdapter(ridesAdapter);
+        final AlertDialog.Builder myAlert = new AlertDialog.Builder(v.getContext());
 
+        ridesResult.setOnItemClickListener (new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    final int position, long id) {
+                Log.d(TAG,"WHERE's jubileu's house?");
+                Ride result = (Ride) ridesResult.getItemAtPosition(position);
+                myAlert.setMessage("Motorista: " + result.getDriver().getName())
+                        .setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setTitle("Carona Confirmada")
+                        .create()
+                        ;
+                myAlert.show();
+            }
+        });
     }
 }
